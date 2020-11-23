@@ -1,0 +1,133 @@
+PRAGMA foreign_keys = ON;
+CREATE TABLE Device
+(
+	SerialNumber INTEGER NOT NULL PRIMARY KEY,
+	InventoryNumber TEXT NOT NULL UNIQUE,
+	TypeID INTEGER NOT NULL,
+	NetworkName TEXT NOT NULL,
+	FOREIGN KEY (TypeID) REFERENCES DeviceType (ID)
+		ON UPDATE CASCADE
+);
+DROP TABLE Device;
+DELETE FROM Device;
+SELECT * FROM Device;
+PRAGMA foreign_keys = ON;
+INSERT INTO Device
+	VALUES (1, 'NSGK0910', 2, 'RUSLAN-PC');
+
+CREATE TABLE DeviceType
+(
+	ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	Name TEXT NOT NULL
+);
+DROP TABLE DeviceType;
+DELETE FROM DeviceType;
+SELECT * FROM DeviceType;
+INSERT INTO DeviceType (Name)
+	VALUES ('Коммутатор'), ('Компьютер'), ('Сервер');
+
+CREATE TABLE Corps
+(
+	ID INTEGER PRIMARY KEY AUTOINCREMENT,
+	Name TEXT NOT NULL
+);
+DROP TABLE Corps;
+DELETE FROM Corps;
+SELECT * FROM Corps;
+INSERT INTO Corps (Name)
+	VALUES ('Главный'),
+		('"Кораблик"'), ('N/A');
+
+CREATE TABLE Cabinet
+(
+	ID INTEGER PRIMARY KEY AUTOINCREMENT,
+	CorpsID INTEGER NOT NULL,
+	Name TEXT NOT NULL,
+	FOREIGN KEY (CorpsID) REFERENCES Corps (ID)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	UNIQUE (CorpsID, Name)
+);
+DROP TABLE Cabinet;
+DELETE FROM Cabinet;
+SELECT * FROM Cabinet;
+
+CREATE TABLE Status
+(
+	ID INTEGER PRIMARY KEY AUTOINCREMENT,
+	Name TEXT UNIQUE NOT NULL
+);
+DROP TABLE Status;
+DELETE FROM Status;
+SELECT * FROM Status;
+INSERT INTO Status (Name)
+	VALUES ('Доставлено на склад'),
+	('Убрано на склад'),
+	('Перемещено'),
+	('Списано');
+
+PRAGMA foreign_keys = ON;
+CREATE TABLE History
+(
+	DeviceSerialNumber INTEGER NOT NULL,
+	CorpsID INTEGER NOT NULL,
+	CabinetID INTEGER NOT NULL,
+	ChangeDate TEXT NOT NULL,
+	StatusID INTEGER NOT NULL,
+	FOREIGN KEY (DeviceSerialNumber) REFERENCES Device (SerialNumber)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	FOREIGN KEY (CorpsID) REFERENCES Corps (ID)
+		ON UPDATE CASCADE,
+	FOREIGN KEY (CabinetID) REFERENCES Cabinet (ID)
+		ON UPDATE CASCADE,
+	FOREIGN KEY (StatusID) REFERENCES Status (ID)
+		ON UPDATE CASCADE,
+	PRIMARY KEY (DeviceSerialNumber, CorpsID, CabinetID, ChangeDate, StatusID)
+);
+DROP TABLE History;
+DELETE FROM History;
+SELECT * FROM History;
+PRAGMA foreign_keys = ON;
+INSERT INTO History
+	VALUES (1, 1, 2, '2020-11-15', 1);
+
+CREATE TABLE IPAddress
+(
+	ID INTEGER PRIMARY KEY AUTOINCREMENT,
+	Address TEXT UNIQUE NOT NULL
+);
+DROP TABLE IPAddress;
+DELETE FROM IPAddress;
+SELECT * FROM IPAddress;
+INSERT INTO IPAddress (Address)
+	VALUES ('N/A'), ('192.68.22.1');
+
+PRAGMA foreign_keys = ON;
+CREATE TABLE DeviceConfiguration
+(
+	DeviceSerialNumber INTEGER PRIMARY KEY NOT NULL,
+	IPAddressID INTEGER,
+	AccountName TEXT,
+	AccountPassword TEXT,
+	FOREIGN KEY (DeviceSerialNumber) REFERENCES Device (SerialNumber)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE,
+	FOREIGN KEY (IPAddressID) REFERENCES IPAddress (ID)
+		ON UPDATE CASCADE
+);
+DROP TABLE DeviceConfiguration;
+DELETE FROM DeviceConfiguration;
+SELECT * FROM DeviceConfiguration;
+PRAGMA foreign_keys = ON;
+INSERT INTO DeviceConfiguration
+	VALUES (1, 1, 'Ruslan', 'admin123');
+
+PRAGMA foreign_keys = ON;
+UPDATE Device
+	SET SerialNumber = 1
+	WHERE SerialNumber = 2;
+
+SELECT * FROM Device;
+SELECT * FROM DeviceConfiguration;
+SELECT * FROM History;

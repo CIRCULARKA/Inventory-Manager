@@ -1,0 +1,145 @@
+<src:InputForm x:Class="AuthDemo.ChangeDeviceDialog"
+	xmlns:src="clr-namespace:AuthDemo"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Title="Введите данные для нового устройства"
+	WindowStartupLocation="CenterScreen"
+	SizeToContent="WidthAndHeight"
+	ResizeMode="NoResize">
+	<Window.Resources>
+		<Style TargetType="TextBox">
+			<Setter Property="TextBox.MaxLength" Value="20" />
+			<Setter Property="Control.Height" Value="28" />
+			<Setter Property="Control.Width" Value="200" />
+			<Setter Property="Margin" Value="0 0 0 7" />
+		</Style>
+		<Style TargetType="Separator">
+			<Setter Property="Control.Height" Value="1" />
+			<Setter Property="Control.Width" Value="Auto" />
+			<Setter Property="Margin" Value="0 0 0 7" />
+		</Style>
+		<Style TargetType="ComboBox">
+			<Setter Property="Control.Height" Value="28" />
+			<Setter Property="Control.Width" Value="200" />
+			<Setter Property="Margin" Value="0 0 0 7" />
+		</Style>
+		<Style TargetType="TextBlock">
+			<Setter Property="Control.Height" Value="28" />
+			<Setter Property="Margin" Value="0 0 5 7" />
+		</Style>
+		<Style TargetType="Button">
+			<Setter Property="Margin" Value="0 0 0 7" />
+			<Setter Property="Width" Value="200" />
+			<Setter Property="Height" Value="30" />
+			<Setter Property="Content" Value="Применить" />
+			<EventSetter Event="Button.Click" Handler="OnApplyButton" />
+		</Style>
+	</Window.Resources>
+	<!-- <StackPanel Name="mainLayout">
+		<StackPanel Orientation="Horizontal" Margin="7 7 7 0">
+			<StackPanel Margin="0 0 5 0">
+				<TextBlock Text="Серийный номер:" />
+				<TextBlock Text="Инвентарный номер:" />
+				<TextBlock Text="Сетевое имя:" />
+				<TextBlock Text="Модель:" />
+				<TextBlock Text="Тип устройства:" />
+				<Separator />
+				<TextBlock Text="Имя учётной записи:" />
+				<TextBlock Text="Пароль учётной записи:" />
+				<TextBlock Text="IP-адрес:" />
+				<TextBlock Text="Корпус:" />
+				<TextBlock Text="Кабинет:" />
+				<TextBlock Text="Статус:" />
+				<TextBlock Text="Дата последних изменений:" />
+			</StackPanel>
+			<StackPanel Name="inputsLayout">
+				<TextBox Name="serialNumberBox" MaxLength="62" />
+				<TextBox Name="inventoryNumberBox" />
+				<TextBox Name="networkNameBox" />
+				<TextBox Name="modelBox" />
+				<ComboBox Name="deviceTypeBox" />
+				<Separator />
+				<TextBox Name="accoutNameBox" />
+				<TextBox Name="passwordBox" />
+				<ComboBox Name="ipAddressBox" />
+				<ComboBox Name="CorpsBox" />
+				<ComboBox Name="cabinetBox" />
+				<ComboBox Name="statusBox" />
+				<TextBox Name="dateBox" />
+			</StackPanel>
+		</StackPanel>
+		<Button Name="applyButton" />
+	</StackPanel> -->
+	<StackPanel Name="mainLayout">
+		<Grid Name="contentLayout"
+			Margin="7 7 7 0">
+			<Grid.RowDefinitions>
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<TextBlock Text="Серийный номер:"
+				Grid.Row="0" Grid.Column="0" />
+			<TextBlock Text="Инвентарный номер:"
+				Grid.Row="1" Grid.Column="0" />
+			<TextBlock Text="Сетевое имя:"
+				Grid.Row="2" Grid.Column="0" />
+			<TextBlock Text="Тип устройства:"
+				Grid.Row="3" Grid.Column="0" />
+			<Separator Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" />
+			<TextBlock Text="Имя учётной записи:"
+				Grid.Row="5" Grid.Column="0" />
+			<TextBlock Text="Пароль учётной записи:"
+				Grid.Row="6" Grid.Column="0" />
+			<TextBlock Text="IP-адрес:"
+				Grid.Row="7" Grid.Column="0" />
+			<TextBlock Text="Корпус:"
+				Grid.Row="8" Grid.Column="0" />
+			<TextBlock Text="Кабинет:"
+				Grid.Row="9" Grid.Column="0" />
+
+			<TextBox Name="serialNumberBox" MaxLength="62"
+				Grid.Row="0" Grid.Column="1" />
+			<TextBox Name="inventoryNumberBox"
+				Grid.Row="1" Grid.Column="1" />
+			<TextBox Name="networkNameBox"
+				Grid.Row="2" Grid.Column="1" />
+			<ComboBox Name="deviceTypeBox"
+				Grid.Row="3" Grid.Column="1" />
+			<TextBox Name="accoutNameBox"
+				Grid.Row="5" Grid.Column="1" />
+			<TextBox Name="passwordBox"
+				Grid.Row="6" Grid.Column="1" />
+			<ComboBox Name="ipAddressBox"
+				Grid.Row="7" Grid.Column="1" />
+			<ComboBox Name="CorpsBox"
+				SelectionChanged="OnCorpsChanged"
+				Grid.Row="8" Grid.Column="1" />
+			<ComboBox Name="cabinetBox"
+				Grid.Row="9" Grid.Column="1" />
+			<StackPanel Name="checkBoxLayout" Orientation="Horizontal"
+				Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2"
+				HorizontalAlignment="Center">
+				<TextBlock Name="statusTextBlock" Text="Вернуть на склад:" />
+				<CheckBox Name="statusBox"
+					HorizontalAlignment="Center"
+					Checked="OnStatusSwitched"
+					Unchecked="OnStatusSwitched" />
+			</StackPanel>
+			<Button Name="applyButton" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" />
+		</Grid>
+	</StackPanel>
+</src:InputForm>

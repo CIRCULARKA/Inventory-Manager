@@ -1,0 +1,59 @@
+using System.Collections.Generic;
+
+using AuthDemo.Exceptions;
+
+namespace AuthDemo.Data
+{
+	public class Device : ProgramDB<Device>
+	{
+		public Device()
+		{
+			FirstPropertyIndex = 0;
+			LastPropertyIndex = 3;
+		}
+
+		public long SerialNumber { get; set; }
+
+		public string InventoryNumber { get; set; }
+
+		public long TypeID => Type.ID;
+
+		public string NetworkName { get; set; }
+
+		public DeviceType Type { get; set; }
+
+		static public List<Device> GetAll()
+		{
+			TryOpenConnection();
+
+			var result = new List<Device>();
+
+			try
+			{
+				CurrentQuery =
+					$"SELECT * FROM [Device];";
+				ExecuteReader();
+
+				if (Reader.HasRows)
+					for (; SwitchToNextRow();)
+						result.Add(GetEntityFromReader());
+				else
+					throw new NoSuchDataException();
+			}
+			finally { FinishQuery(); }
+
+			return result;
+		}
+
+		static protected Device GetEntityFromReader()
+		{
+			var result = new Device();
+			result.SerialNumber = (long)ReadColumnFromRow(0);
+			result.InventoryNumber = (string)ReadColumnFromRow(1);
+			result.Type = DeviceType.GetDeviceTypeByID((long)ReadColumnFromRow(2));
+			result.NetworkName = (string)ReadColumnFromRow(3);
+
+			return result;
+		}
+	}
+}

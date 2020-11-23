@@ -1,0 +1,42 @@
+<src:InputForm x:Class="AuthDemo.ChangeUserDialog"
+	xmlns:src="clr-namespace:AuthDemo"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Title="Заполните данные для нового пользователя"
+	WindowStartupLocation="CenterScreen"
+	SizeToContent="WidthAndHeight"
+	ResizeMode="NoResize">
+	<Window.Resources>
+		<Style TargetType="TextBlock">
+			<Setter Property="Margin" Value="0 0 0 7" />
+			<Setter Property="Height" Value="20" />
+		</Style>
+		<Style TargetType="TextBox">
+			<Setter Property="Margin" Value="0 0 0 7" />
+			<Setter Property="Width" Value="200" />
+			<Setter Property="Height" Value="20" />
+			<Setter Property="MaxLength" Value="20" />
+		</Style>
+	</Window.Resources>
+	<StackPanel Name="mainLayout">
+		<StackPanel Orientation="Horizontal" Margin="7 7 7 0">
+			<StackPanel Margin="0 0 5 0">
+				<TextBlock Name="fullNameLabel" Text="ФИО:" />
+				<TextBlock Text="Логин:" />
+				<TextBlock Text="Пароль:" />
+				<TextBlock Text="Группа:" />
+			</StackPanel>
+			<StackPanel Name="inputsLayout">
+				<TextBox Name="fullNameBox" MaxLength="62" />
+				<TextBox Name="loginBox" />
+				<TextBox Name="passwordBox" />
+				<ComboBox Name="groupBox" />
+			</StackPanel>
+		</StackPanel>
+		<Button Name="applyButton"
+			Width="200" Height="30"
+			Margin="0 7 0 7"
+			Content="Добавить пользователя"
+			Click="OnApplyButton" />
+	</StackPanel>
+</src:InputForm>

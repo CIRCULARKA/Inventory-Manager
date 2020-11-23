@@ -1,0 +1,45 @@
+SELECT * FROM User;
+SELECT * FROM [Group];
+SELECT * FROM Sertificate;
+
+CREATE TABLE User
+(
+	ID INTEGER PRIMARY KEY AUTOINCREMENT,
+	LastName TEXT NOT NULL,
+	FirstName TEXT NOT NULL,
+	MiddleName TEXT NOT NULL,
+	[Login] TEXT NOT NULL UNIQUE,
+	[Password] TEXT NOT NULL,
+	GroupID INTEGER NOT NULL,
+	FOREIGN KEY (GroupID) REFERENCES [Group] (ID)
+);
+DROP TABLE User;
+DELETE FROM User;
+SELECT * FROM User;
+INSERT INTO User (LastName, FirstName, MiddleName, [Login], [Password], GroupID)
+	VALUES ('Гачегов', 'Руслан', 'Вячеславович', 'ruslan123', '123123',
+		(SELECT ID FROM [Group] WHERE Name = 'Суперпользователь'));
+
+CREATE TABLE [Group]
+(
+	ID INTEGER PRIMARY KEY AUTOINCREMENT,
+	[Name] TEXT UNIQUE
+);
+DROP TABLE [Group];
+DELETE FROM [Group];
+SELECT * FROM [Group];
+INSERT INTO [Group] (Name)
+	VALUES ('Техник'),
+		('Администратор'),
+		('Суперпользователь');
+
+CREATE TABLE Sertificate
+(
+	SubjectName TEXT NOT NULL,
+	SerialNumber INTEGER PRIMARY KEY,
+	ValidFrom TEXT NOT NULL,
+	ValidUntil TEXT NOT NULL
+);
+DROP TABLE Sertificate;
+DELETE FROM [Sertificate];
+SELECT * FROM [Sertificate];
