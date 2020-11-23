@@ -70,7 +70,11 @@ namespace AuthDemo
 				foreach (Cabinet cabinet in Cabinet.GetAll(corpsBox.SelectedItem as Corps))
 					cabinetBox.Items.Add(cabinet);
 			}
-			catch (NullReferenceException) { }
+			catch (NullReferenceException)
+			{
+				foreach (Cabinet cabinet in Cabinet.GetAll(corpsBox.SelectedItem as Corps))
+					cabinetBox.Items.Add(cabinet);
+			}
 		}
 
 		protected override void OnApplyButton(object sender, RoutedEventArgs rea)
