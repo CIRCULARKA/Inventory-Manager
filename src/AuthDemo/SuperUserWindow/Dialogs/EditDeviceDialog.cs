@@ -27,18 +27,22 @@ namespace AuthDemo
 
 		private void DisplayDeviceData()
 		{
+			serialNumberBox.Text = SelectedDevice.SerialNumber.ToString();
+			inventoryNumberBox.Text = SelectedDevice.InventoryNumber;
+			networkNameBox.Text = SelectedDevice.NetworkName;
+
 			try
 			{
-				serialNumberBox.Text = SelectedDevice.SerialNumber.ToString();
-				inventoryNumberBox.Text = SelectedDevice.InventoryNumber;
-				networkNameBox.Text = SelectedDevice.NetworkName;
-
 				for (int i = 0; i < deviceTypeBox.Items.Count; i++)
 				{
 					if (SelectedDevice.Type.ID == (deviceTypeBox.Items[i] as DeviceType).ID)
 						deviceTypeBox.SelectedIndex = i;
 				}
+			}
+			catch (NoSuchDataException) { }
 
+			try
+			{
 				for (int i = 0; i < CorpsBox.Items.Count; i++)
 				{
 					var currentCorps = CorpsBox.Items[i] as Corps;
@@ -48,7 +52,11 @@ namespace AuthDemo
 						break;
 					}
 				}
+			}
+			catch (NoSuchDataException) { }
 
+			try
+			{
 				foreach (Cabinet cabinet in Cabinet.GetAll(CorpsBox.SelectedItem as Corps))
 					cabinetBox.Items.Add(cabinet);
 			}
