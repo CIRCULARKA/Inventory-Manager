@@ -164,6 +164,7 @@
 								Click="OnAddDevice" />
 							<Button Name="editDeviceBtn" Content="Редактировать"
 								Click="OnEditDevice" />
+							<Button Name="showDeviceHistoryButton" Content="История" />
 							<Button Name="deleteDeviceBtn" Content="Удалить"
 								Click="OnDeleteDevice" />
 						</StackPanel>
