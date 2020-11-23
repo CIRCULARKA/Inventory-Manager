@@ -14,7 +14,7 @@
 		</Style>
 		<Style TargetType="TextBlock" BasedOn="{StaticResource commonTone}" />
 		<Style TargetType="Button">
-			<Setter Property="Width" Value="150" />
+			<Setter Property="Width" Value="100" />
 			<Setter Property="Height" Value="30" />
 			<Setter Property="Margin" Value="7 7 0 5" />
 		</Style>
