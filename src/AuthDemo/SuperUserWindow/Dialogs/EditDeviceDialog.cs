@@ -16,9 +16,13 @@ namespace AuthDemo
 
 			DisableControl(serialNumberBox);
 
-			var lastDeviceNote = History.GetDeviceLastHirstoryNote(SelectedDevice);
-			if (lastDeviceNote.Status.Name == "Убрано на склад")
-				statusBox.IsChecked = true;
+			try
+			{
+				var lastDeviceNote = History.GetDeviceLastHirstoryNote(SelectedDevice);
+				if (lastDeviceNote.Status.Name == "Убрано на склад")
+					statusBox.IsChecked = true;
+			}
+			catch (NoSuchDataException) { }
 		}
 
 		private void DisplayDeviceData()
