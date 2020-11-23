@@ -158,12 +158,12 @@ namespace AuthDemo
 			}
 		}
 
-		void OnAddDevice(object s, RoutedEventArgs rea)
+		private void OnAddDevice(object s, RoutedEventArgs rea)
 		{
 			ShowChildWindowAndFocus(new AddDeviceDialog(this));
 		}
 
-		void OnEditDevice(object s, RoutedEventArgs rea)
+		private void OnEditDevice(object s, RoutedEventArgs rea)
 		{
 			HidePopupMessage(mainLayout);
 
@@ -173,7 +173,15 @@ namespace AuthDemo
 				ShowChildWindowAndFocus(new EditDeviceDialog(this));
 		}
 
-		void OnDeleteDevice(object s, RoutedEventArgs rea)
+		private void OnDeviceHistory(object sender, RoutedEventArgs info)
+		{
+			HidePopupMessage(mainLayout);
+
+			if (devicesGrid.SelectedIndex == -1)
+				ShowPopupMessage("Выберите устройство из списка", mainLayout);
+		}
+
+		private void OnDeleteDevice(object s, RoutedEventArgs rea)
 		{
 			try
 			{
