@@ -1,0 +1,41 @@
+<src:MonoWindowBehavior x:Class="AuthDemo.DeviceHistoryWindow"
+	xmlns:src="clr-namespace:AuthDemo"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Title="История операций с устройством"
+	WindowStartupLocation="CenterScreen"
+	SizeToContent="WidthAndHeight"
+	ResizeMode="NoResize">
+	<MonoWindowBehavior.Resources>
+		<Style x:Key="scrollStyle">
+			<Setter Property="ScrollViewer.Height" Value="200" />
+		</Style>
+	</MonoWindowBehavior.Resources>
+	<StackPanel Name="mainLayout">
+		<ScrollViewer Style="{StaticResource ResourceKey=scrollStyle}"
+			Name="usersGridScroll">
+			<ListView Name="historyGrid"
+				SelectionMode="Single"
+				Margin="4 4 4 0"
+				PreviewMouseWheel="OnUsersGridScroll">
+				<ListView.ItemContainerStyle>
+					<Style TargetType="ListViewItem">
+						<Setter Property="Height" Value="23" />
+					</Style>
+				</ListView.ItemContainerStyle>
+				<ListView.View>
+					<GridView>
+						<GridViewColumn Header="Действие"
+							DisplayMemberBinding="{Binding Path=Status.Name}" Width="150" />
+						<GridViewColumn Header="Корпус"
+							DisplayMemberBinding="{Binding Path=Corps.Name}" Width="150" />
+						<GridViewColumn Header="Кабинет"
+							DisplayMemberBinding="{Binding Path=Cabinet.Name}" Width="60" />
+						<GridViewColumn Header="Дата изменений"
+							DisplayMemberBinding="{Binding Path=ChangeTimeDateTime}" Width="100" />
+					</GridView>
+				</ListView.View>
+			</ListView>
+		</ScrollViewer>
+	</StackPanel>
+</src:MonoWindowBehavior>
