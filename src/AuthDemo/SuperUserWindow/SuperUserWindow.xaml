@@ -68,10 +68,10 @@
 						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 							<Button Name="addUserBtn" Content="Добавить"
 								Click="OnAddUser" />
-							<Button Name="deleteUserBtn" Content="Удалить"
-								Click="OnDeleteUser" />
 							<Button Name="editUserBtn" Content="Редактировать"
 								Click="OnEditUser" />
+							<Button Name="deleteUserBtn" Content="Удалить"
+								Click="OnDeleteUser" />
 						</StackPanel>
 					</StackPanel>
 				</TabItem.Content>
@@ -115,10 +115,10 @@
 						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 							<Button Name="addSertificateBtn" Content="Добавить"
 								Click="OnAddSertificate" />
-							<Button Name="deleteSertificateBtn" Content="Удалить"
-								Click="OnDeleteSertificate" />
 							<Button Name="editSertificateBtn" Content="Редактировать"
 								Click="OnEditSertificate" />
+							<Button Name="deleteSertificateBtn" Content="Удалить"
+								Click="OnDeleteSertificate" />
 						</StackPanel>
 					</StackPanel>
 				</TabItem.Content>
@@ -162,10 +162,10 @@
 						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 							<Button Name="addDeviceBtn" Content="Добавить"
 								Click="OnAddDevice" />
-							<Button Name="deleteDeviceBtn" Content="Удалить"
-								Click="OnDeleteDevice" />
 							<Button Name="editDeviceBtn" Content="Редактировать"
 								Click="OnEditDevice" />
+							<Button Name="deleteDeviceBtn" Content="Удалить"
+								Click="OnDeleteDevice" />
 						</StackPanel>
 					</StackPanel>
 				</TabItem.Content>
