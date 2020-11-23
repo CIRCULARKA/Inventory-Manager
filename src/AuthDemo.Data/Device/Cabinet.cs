@@ -42,7 +42,7 @@ namespace AuthDemo.Data
 			return result;
 		}
 
-		static public List<Cabinet> GetAll(Corps Corps)
+		static public List<Cabinet> GetAll(Corps corps)
 		{
 			TryOpenConnection();
 
@@ -52,24 +52,28 @@ namespace AuthDemo.Data
 			{
 				CurrentQuery =
 					$"SELECT * FROM [Cabinet] " +
-						"WHERE CorpsID = @CorpsID;";
+						"WHERE CorpsID = @corpsID;";
 
-				AddParameter("@CorpsID", Corps.ID);
+				AddParameter("@corpsID", corps.ID);
 
 				ExecuteReader();
 
 				if (Reader.HasRows)
+				{
 					for (; SwitchToNextRow();)
 						result.Add(GetEntityFromReader());
+				}
 				else
+				{
 					throw new NoSuchDataException();
+				}
 			}
 			finally { FinishQuery(); }
 
 			return result;
 		}
 
-		static Cabinet GetEntityFromReader()
+		private static Cabinet GetEntityFromReader()
 		{
 			var result = new Cabinet();
 
