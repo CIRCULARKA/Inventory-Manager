@@ -57,7 +57,8 @@ namespace AuthDemo
 			{
 				for (int i = 0; i < corpsBox.Items.Count; i++)
 				{
-					if (SelectedDevicelastHistoryNote.Corps.Name == "N/A")
+					var currentCorps = corpsBox.Items[i] as Corps;
+					if (currentCorps.Name == "N/A")
 					{
 						corpsBox.SelectedIndex = i;
 						break;
@@ -70,11 +71,7 @@ namespace AuthDemo
 				foreach (Cabinet cabinet in Cabinet.GetAll(corpsBox.SelectedItem as Corps))
 					cabinetBox.Items.Add(cabinet);
 			}
-			catch (NullReferenceException)
-			{
-				foreach (Cabinet cabinet in Cabinet.GetAll(corpsBox.SelectedItem as Corps))
-					cabinetBox.Items.Add(cabinet);
-			}
+			catch (NullReferenceException) { }
 		}
 
 		protected override void OnApplyButton(object sender, RoutedEventArgs rea)
