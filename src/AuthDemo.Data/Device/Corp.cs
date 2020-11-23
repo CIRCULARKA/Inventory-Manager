@@ -16,7 +16,7 @@ namespace AuthDemo.Data
 
 		public string Name { get; set; }
 
-		static public Corps GetCorpsByID(long CorpsID)
+		static public Corps GetCorpsByID(long corpsId)
 		{
 			try
 			{
@@ -25,7 +25,7 @@ namespace AuthDemo.Data
 				CurrentQuery = "SELECT * FROM Corps " +
 					"WHERE ID = @id;";
 
-				AddParameter("@id", CorpsID);
+				AddParameter("@id", corpsId);
 
 				ExecuteReader();
 
@@ -45,6 +45,34 @@ namespace AuthDemo.Data
 			{
 				FinishQuery();
 			}
+		}
+
+		static public Corps GetCorpsByName(string corpsName)
+		{
+			try
+			{
+				TryOpenConnection();
+
+				CurrentQuery = "SELECT * FROM Corps " +
+					"WHERE Name = @name;";
+
+				AddParameter("@name", corpsName);
+
+				ExecuteReader();
+
+				if (Reader.HasRows)
+				{
+					SwitchToNextRow();
+					return GetEntityFromReader();
+				}
+				else
+				{
+					throw new NoSuchDataException(
+						"Корпус не найден"
+					);
+				}
+			}
+			finally { FinishQuery(); }
 		}
 
 		static public List<Corps> GetAll()
