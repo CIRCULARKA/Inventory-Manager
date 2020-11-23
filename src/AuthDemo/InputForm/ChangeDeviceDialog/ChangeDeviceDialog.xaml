@@ -62,7 +62,7 @@
 				<TextBox Name="accoutNameBox" />
 				<TextBox Name="passwordBox" />
 				<ComboBox Name="ipAddressBox" />
-				<ComboBox Name="CorpsBox" />
+				<ComboBox Name="corpsBox" />
 				<ComboBox Name="cabinetBox" />
 				<ComboBox Name="statusBox" />
 				<TextBox Name="dateBox" />
@@ -125,7 +125,7 @@
 				Grid.Row="6" Grid.Column="1" />
 			<ComboBox Name="ipAddressBox"
 				Grid.Row="7" Grid.Column="1" />
-			<ComboBox Name="CorpsBox"
+			<ComboBox Name="corpsBox"
 				SelectionChanged="OnCorpsChanged"
 				Grid.Row="8" Grid.Column="1" />
 			<ComboBox Name="cabinetBox"

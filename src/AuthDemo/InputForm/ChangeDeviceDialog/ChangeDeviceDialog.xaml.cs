@@ -42,7 +42,7 @@ namespace AuthDemo
 			try
 			{
 				foreach (Corps Corps in Corps.GetAll())
-					CorpsBox.Items.Add(Corps);
+					corpsBox.Items.Add(Corps);
 			}
 			catch (NoSuchDataException) { }
 		}
@@ -81,10 +81,10 @@ namespace AuthDemo
 				currentHistoryNote = History.GetDeviceLastHirstoryNote(SelectedDevice);
 
 				// Setting device's Corps
-				for (int i = 0; i < CorpsBox.Items.Count; i++)
+				for (int i = 0; i < corpsBox.Items.Count; i++)
 				{
-					if ((CorpsBox.Items[i] as Corps).ID == currentHistoryNote.CorpsID)
-						CorpsBox.SelectedIndex = i;
+					if ((corpsBox.Items[i] as Corps).ID == currentHistoryNote.CorpsID)
+						corpsBox.SelectedIndex = i;
 				}
 			}
 			catch (NoSuchDataException) { }
@@ -107,7 +107,7 @@ namespace AuthDemo
 			cabinetBox.Items.Clear();
 			try
 			{
-				foreach (Cabinet cabinet in Cabinet.GetAll(CorpsBox.SelectedItem as Corps))
+				foreach (Cabinet cabinet in Cabinet.GetAll(corpsBox.SelectedItem as Corps))
 					cabinetBox.Items.Add(cabinet);
 				cabinetBox.SelectedIndex = 0;
 			}

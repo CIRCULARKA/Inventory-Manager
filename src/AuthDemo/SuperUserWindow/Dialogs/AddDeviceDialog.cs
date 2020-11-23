@@ -11,15 +11,15 @@ namespace AuthDemo
 		public AddDeviceDialog(SuperUserWindow parent) : base(parent)
 		{
 			// Picking N/A Corps as a default value in ComboBox
-			for (int i = 0; i < CorpsBox.Items.Count; i++)
+			for (int i = 0; i < corpsBox.Items.Count; i++)
 			{
-				var currentCorps = CorpsBox.Items[i] as Corps;
+				var currentCorps = corpsBox.Items[i] as Corps;
 				if (currentCorps.Name == "N/A")
-					CorpsBox.SelectedIndex = i;
+					corpsBox.SelectedIndex = i;
 			}
 
 			// Picking cabinet according to Corps
-			foreach (Cabinet cabinet in Cabinet.GetAll(CorpsBox.SelectedItem as Corps))
+			foreach (Cabinet cabinet in Cabinet.GetAll(corpsBox.SelectedItem as Corps))
 				cabinetBox.Items.Add(cabinet);
 			cabinetBox.SelectedIndex = 0;
 
@@ -61,7 +61,7 @@ namespace AuthDemo
 				var newHistoryNote = new History()
 				{
 					DeviceSerialNumber = long.Parse(serialNumberBox.Text),
-					Corps = CorpsBox.SelectedItem as Corps,
+					Corps = corpsBox.SelectedItem as Corps,
 					Cabinet = cabinetBox.SelectedItem as Cabinet,
 					Status = Status.GetStatusByID(1),
 					ChangeTimeDateTime = DateTime.Now

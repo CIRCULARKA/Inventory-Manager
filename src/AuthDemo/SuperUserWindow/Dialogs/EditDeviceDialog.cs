@@ -43,12 +43,12 @@ namespace AuthDemo
 
 			try
 			{
-				for (int i = 0; i < CorpsBox.Items.Count; i++)
+				for (int i = 0; i < corpsBox.Items.Count; i++)
 				{
-					var currentCorps = CorpsBox.Items[i] as Corps;
+					var currentCorps = corpsBox.Items[i] as Corps;
 					if (SelectedDevicelastHistoryNote.CorpsID == currentCorps.ID)
 					{
-						CorpsBox.SelectedIndex = i;
+						corpsBox.SelectedIndex = i;
 						break;
 					}
 				}
@@ -57,7 +57,7 @@ namespace AuthDemo
 
 			try
 			{
-				foreach (Cabinet cabinet in Cabinet.GetAll(CorpsBox.SelectedItem as Corps))
+				foreach (Cabinet cabinet in Cabinet.GetAll(corpsBox.SelectedItem as Corps))
 					cabinetBox.Items.Add(cabinet);
 			}
 			catch (NullReferenceException) { }
@@ -95,7 +95,7 @@ namespace AuthDemo
 				var newHistoryNote = new History()
 				{
 					DeviceSerialNumber = long.Parse(serialNumberBox.Text),
-					Corps = CorpsBox.SelectedItem as Corps,
+					Corps = corpsBox.SelectedItem as Corps,
 					Cabinet = cabinetBox.SelectedItem as Cabinet,
 					Status = (bool)statusBox.IsChecked ?
 						Status.GetStatusByName("Убрано на склад") :
