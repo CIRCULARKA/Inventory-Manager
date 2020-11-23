@@ -53,7 +53,17 @@ namespace AuthDemo
 					}
 				}
 			}
-			catch (NoSuchDataException) { }
+			catch (NoSuchDataException)
+			{
+				for (int i = 0; i < corpsBox.Items.Count; i++)
+				{
+					if (SelectedDevicelastHistoryNote.Corps.Name == "N/A")
+					{
+						corpsBox.SelectedIndex = i;
+						break;
+					}
+				}
+			}
 
 			try
 			{
