@@ -24,8 +24,7 @@ namespace AuthDemo
 			cabinetBox.SelectedIndex = 0;
 
 			// Hiding statusBox - any device addition means putting it into storage
-			contentLayout.Children.Remove(statusBox);
-			contentLayout.Children.Remove(statusTextBlock);
+			contentLayout.Children.Remove(checkBoxLayout);
 		}
 
 		protected override void OnApplyButton(object sender, RoutedEventArgs rea)
