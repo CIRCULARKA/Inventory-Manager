@@ -34,7 +34,10 @@ namespace AuthDemo
 					this.Close();
 					return;
 				}
-				else throw new WrongPasswordException();
+				else
+				{
+					throw new WrongPasswordException();
+				}
 			}
 			catch (NoSuchDataException e)
 			{
