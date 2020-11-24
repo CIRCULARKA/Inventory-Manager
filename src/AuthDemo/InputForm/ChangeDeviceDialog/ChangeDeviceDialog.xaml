@@ -133,7 +133,7 @@
 			<StackPanel Name="checkBoxLayout" Orientation="Horizontal"
 				Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2"
 				HorizontalAlignment="Center">
-				<TextBlock Name="statusTextBlock" Text="Вернуть на склад:" />
+				<TextBlock Text="Вернуть на склад:" />
 				<CheckBox Name="statusBox"
 					HorizontalAlignment="Center"
 					Checked="OnStatusSwitched"
