@@ -11,15 +11,15 @@ namespace AuthDemo
 {
 	public partial class SuperUserWindow : MonoWindowBehavior
 	{
-		private readonly List<User> users;
-		private readonly List<Sertificate> sertificates;
-		private readonly List<Device> devices;
+		private readonly List<User> _users;
+		private readonly List<Sertificate> _sertificates;
+		private readonly List<Device> _devices;
 
 		public SuperUserWindow()
 		{
-			users = new List<User>();
-			sertificates = new List<Sertificate>();
-			devices = new List<Device>();
+			_users = new List<User>();
+			_sertificates = new List<Sertificate>();
+			_devices = new List<Device>();
 
 			FillGridsWithDataAndInitXaml();
 		}
@@ -31,14 +31,14 @@ namespace AuthDemo
 			GetDevicesFromDB();
 			InitializeComponent();
 
-			usersGrid.ItemsSource = users;
-			sertificatesGrid.ItemsSource = sertificates;
-			devicesGrid.ItemsSource = devices;
+			usersGrid.ItemsSource = _users;
+			sertificatesGrid.ItemsSource = _sertificates;
+			devicesGrid.ItemsSource = _devices;
 		}
 
 		private void GetUsersFromDB()
 		{
-			try { users.AddRange(User.GetAllEntities()); }
+			try { _users.AddRange(User.GetAllEntities()); }
 			catch (NoSuchDataException) { }
 		}
 
@@ -46,7 +46,7 @@ namespace AuthDemo
 		{
 			try
 			{
-				sertificates.
+				_sertificates.
 					AddRange(
 						Sertificate.
 							GetAllEntities()
@@ -57,35 +57,35 @@ namespace AuthDemo
 
 		private void GetDevicesFromDB()
 		{
-			try { devices.AddRange(Device.GetAll()); }
+			try { _devices.AddRange(Device.GetAll()); }
 			catch (NoSuchDataException) { }
 		}
 
 		public void UpdateUsersGrid()
 		{
-			users.RemoveRange(0, users.Count);
-			users.AddRange(User.GetAllEntities());
+			_users.RemoveRange(0, _users.Count);
+			_users.AddRange(User.GetAllEntities());
 			usersGrid.ItemsSource = null;
-			usersGrid.ItemsSource = users;
+			usersGrid.ItemsSource = _users;
 		}
 
 		public void UpdateSertificatesGrid()
 		{
-			sertificates.RemoveRange(0, sertificates.Count);
-			sertificates.
+			_sertificates.RemoveRange(0, _sertificates.Count);
+			_sertificates.
 				AddRange(Sertificate.GetAllEntities());
 			sertificatesGrid.ItemsSource = null;
-			sertificatesGrid.ItemsSource = sertificates;
+			sertificatesGrid.ItemsSource = _sertificates;
 		}
 
 		public void UpdateDevicesGrid()
 		{
-			devices.RemoveRange(0, devices.Count);
+			_devices.RemoveRange(0, _devices.Count);
 			try
 			{
-				devices.AddRange(Device.GetAll());
+				_devices.AddRange(Device.GetAll());
 				devicesGrid.ItemsSource = null;
-				devicesGrid.ItemsSource = devices;
+				devicesGrid.ItemsSource = _devices;
 			}
 			catch (NoSuchDataException)
 			{
