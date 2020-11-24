@@ -29,6 +29,9 @@ namespace AuthDemo
 			}
 		}
 
+		/// <summary>
+		/// Checks if there empty TextBoxes in layout
+		/// </summary>
 		protected bool IsThereEmptyFields(Panel layout)
 		{
 			foreach (UIElement item in layout.Children)
@@ -44,7 +47,7 @@ namespace AuthDemo
 		}
 
 		/// <summary>
-		/// Checks for text in TextBoxes
+		/// Checks is there a specified number of first TextBoxes in the layout
 		/// </summary>
 		protected bool IsThereEmptyFields(Panel layout, int fieldsToCheck)
 		{
