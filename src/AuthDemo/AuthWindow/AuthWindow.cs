@@ -78,11 +78,11 @@ namespace AuthDemo
 		{
 			// Temporary solution
 			if (user.Group.ID == Group.GetGroupByName("Техник").ID)
-				ShowWindow(new SuperUserWindow(this));
+				ShowWindow(new SuperUserWindow());
 			else if (user.Group.ID == Group.GetGroupByName("Администратор").ID)
-				ShowWindow(new SuperUserWindow(this));
+				ShowWindow(new SuperUserWindow());
 			else if (user.Group.ID == Group.GetGroupByName("Суперпользователь").ID)
-				ShowWindow(new SuperUserWindow(this));
+				ShowWindow(new SuperUserWindow());
 		}
 
 		void ShowWindow(Window window) { window.Show(); }
