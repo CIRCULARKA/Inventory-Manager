@@ -24,6 +24,9 @@ namespace AuthDemo
 			FillGridsWithDataAndInitXaml();
 		}
 
+		public Device SelectedDevice =>
+			devicesGrid.SelectedItem as Device;
+
 		private void FillGridsWithDataAndInitXaml()
 		{
 			GetUsersFromDB();
