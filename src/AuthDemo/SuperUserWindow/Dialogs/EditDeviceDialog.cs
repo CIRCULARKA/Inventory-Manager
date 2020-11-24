@@ -36,7 +36,10 @@ namespace AuthDemo
 				for (int i = 0; i < deviceTypeBox.Items.Count; i++)
 				{
 					if (SelectedDevice.Type.ID == (deviceTypeBox.Items[i] as DeviceType).ID)
+					{
 						deviceTypeBox.SelectedIndex = i;
+						break;
+					}
 				}
 			}
 			catch (NoSuchDataException) { }
