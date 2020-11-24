@@ -179,6 +179,8 @@ namespace AuthDemo
 
 			if (devicesGrid.SelectedIndex == -1)
 				ShowPopupMessage("Выберите устройство из списка", mainLayout);
+			else
+				ShowChildWindowAndFocus(new DeviceHistoryWindow(this));
 		}
 
 		private void OnDeleteDevice(object s, RoutedEventArgs rea)
