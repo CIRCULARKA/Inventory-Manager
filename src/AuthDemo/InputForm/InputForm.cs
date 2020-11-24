@@ -43,6 +43,9 @@ namespace AuthDemo
 			return false;
 		}
 
+		/// <summary>
+		/// Checks for text in TextBoxes
+		/// </summary>
 		protected bool IsThereEmptyFields(Panel layout, int fieldsToCheck)
 		{
 			int counter = 0;
