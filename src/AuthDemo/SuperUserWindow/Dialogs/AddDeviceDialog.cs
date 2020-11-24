@@ -6,7 +6,7 @@ using AuthDemo.Exceptions;
 
 namespace AuthDemo
 {
-	class AddDeviceDialog : ChangeDeviceDialog
+	internal class AddDeviceDialog : ChangeDeviceDialog
 	{
 		public AddDeviceDialog(SuperUserWindow parent) : base(parent)
 		{
