@@ -16,13 +16,13 @@ namespace AuthDemo
 			userLogin.Focus();
 		}
 
-		void OnKeyPressed(object s, KeyEventArgs eventArgs)
+		private void OnKeyPressed(object s, KeyEventArgs eventArgs)
 		{
 			if (eventArgs.Key == Key.Enter)
 				FocusOnControl(authButton);
 		}
 
-		void OnAuthButton(object s, RoutedEventArgs rea)
+		private void OnAuthButton(object s, RoutedEventArgs rea)
 		{
 			try
 			{
@@ -54,7 +54,7 @@ namespace AuthDemo
 
 		}
 
-		void OnLoginChanged(object s, RoutedEventArgs rea)
+		private void OnLoginChanged(object s, RoutedEventArgs rea)
 		{
 			TextBox sender = s as TextBox;
 
@@ -74,7 +74,7 @@ namespace AuthDemo
 			}
 		}
 
-		void OpenWindowForUserGroup(User user)
+		private void OpenWindowForUserGroup(User user)
 		{
 			// Temporary solution
 			if (user.Group.ID == Group.GetGroupByName("Техник").ID)
@@ -85,6 +85,6 @@ namespace AuthDemo
 				ShowWindow(new SuperUserWindow());
 		}
 
-		void ShowWindow(Window window) { window.Show(); }
+		private void ShowWindow(Window window) { window.Show(); }
 	}
 }
