@@ -31,8 +31,7 @@ namespace AuthDemo
 				if (userPassword.Password == currentUser.Password)
 				{
 					OpenWindowForUserGroup(currentUser);
-					this.Close();
-					return;
+					Close();
 				}
 				else
 				{
@@ -54,7 +53,6 @@ namespace AuthDemo
 			{
 				ShowPopupMessage(e.Message, authLayout);
 			}
-
 		}
 
 		private void OnLoginChanged(object s, RoutedEventArgs rea)
