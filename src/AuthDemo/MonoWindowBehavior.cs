@@ -7,8 +7,8 @@ namespace AuthDemo
 {
 	public class MonoWindowBehavior : Window
 	{
-		protected TextBlock _popupMessage;
-		protected Brush _defaultBorderBrush;
+		protected readonly TextBlock _popupMessage;
+		protected readonly Brush _defaultBorderBrush;
 
 		public MonoWindowBehavior()
 		{
