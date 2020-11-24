@@ -80,9 +80,9 @@ namespace AuthDemo
 			{
 				RestoreFieldsBordersColor(mainLayout);
 				HidePopupMessage(mainLayout);
-				if (IsThereEmptyFields(mainLayout, 4))
+				if (IsThereEmptyFields(mainLayout, 3))
 				{
-					MakeEmptyFieldsRed(mainLayout, 4);
+					MakeEmptyFieldsRed(mainLayout, 3);
 					ShowPopupMessage("Не все поля заполнены", mainLayout);
 					return;
 				}

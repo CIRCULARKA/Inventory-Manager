@@ -34,9 +34,9 @@ namespace AuthDemo
 				RestoreFieldsBordersColor(contentLayout);
 				HidePopupMessage(mainLayout);
 
-				if (IsThereEmptyFields(contentLayout, 4))
+				if (IsThereEmptyFields(contentLayout, 3))
 				{
-					MakeEmptyFieldsRed(contentLayout, 4);
+					MakeEmptyFieldsRed(contentLayout, 3);
 					ShowPopupMessage("Не все поля заполнены", mainLayout);
 					return;
 				}
