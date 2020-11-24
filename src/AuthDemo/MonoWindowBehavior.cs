@@ -7,15 +7,15 @@ namespace AuthDemo
 {
 	public class MonoWindowBehavior : Window
 	{
-		protected TextBlock popupMessage;
-		protected Brush defaultBorderBrush;
+		protected TextBlock _popupMessage;
+		protected Brush _defaultBorderBrush;
 
 		public MonoWindowBehavior()
 		{
-			popupMessage = new TextBlock();
-			defaultBorderBrush = Brushes.Gray;
+			_popupMessage = new TextBlock();
+			_defaultBorderBrush = Brushes.Gray;
 
-			popupMessage = new TextBlock()
+			_popupMessage = new TextBlock()
 			{
 				Height = 15,
 				TextWrapping = TextWrapping.Wrap,
@@ -29,7 +29,7 @@ namespace AuthDemo
 		{
 			try
 			{
-				layout.Children.Remove(popupMessage);
+				layout.Children.Remove(_popupMessage);
 			}
 			catch (InvalidOperationException) { }
 		}
@@ -38,8 +38,8 @@ namespace AuthDemo
 		{
 			try
 			{
-				popupMessage.Text = message;
-				layout.Children.Add(popupMessage);
+				_popupMessage.Text = message;
+				layout.Children.Add(_popupMessage);
 			}
 			catch (ArgumentException) { }
 			catch (InvalidOperationException) { }
@@ -83,7 +83,7 @@ namespace AuthDemo
 
 		protected void RestoreBorderBrush(Control obj)
 		{
-			obj.BorderBrush = defaultBorderBrush;
+			obj.BorderBrush = _defaultBorderBrush;
 		}
 
 		protected void FocusOnControl(Control item)
