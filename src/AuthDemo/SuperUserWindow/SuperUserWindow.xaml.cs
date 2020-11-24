@@ -24,7 +24,7 @@ namespace AuthDemo
 			FillGridsWithDataAndInitXaml();
 		}
 
-		void FillGridsWithDataAndInitXaml()
+		private void FillGridsWithDataAndInitXaml()
 		{
 			GetUsersFromDB();
 			GetSertificatesFromDB();
@@ -36,13 +36,13 @@ namespace AuthDemo
 			devicesGrid.ItemsSource = devices;
 		}
 
-		void GetUsersFromDB()
+		private void GetUsersFromDB()
 		{
 			try { users.AddRange(User.GetAllEntities()); }
 			catch (NoSuchDataException) { }
 		}
 
-		void GetSertificatesFromDB()
+		private void GetSertificatesFromDB()
 		{
 			try
 			{
@@ -55,7 +55,7 @@ namespace AuthDemo
 			catch (NoSuchDataException) { }
 		}
 
-		void GetDevicesFromDB()
+		private void GetDevicesFromDB()
 		{
 			try { devices.AddRange(Device.GetAll()); }
 			catch (NoSuchDataException) { }
@@ -93,13 +93,13 @@ namespace AuthDemo
 			}
 		}
 
-		void ShowChildWindowAndFocus(Window window) =>
+		private void ShowChildWindowAndFocus(Window window) =>
 			window.ShowDialog();
 
-		void OnAddUser(object sender, RoutedEventArgs rea) =>
+		private void OnAddUser(object sender, RoutedEventArgs rea) =>
 			ShowChildWindowAndFocus(new AddUserDialog(this));
 
-		void OnEditUser(object sender, RoutedEventArgs rea)
+		private void OnEditUser(object sender, RoutedEventArgs rea)
 		{
 			HidePopupMessage(mainLayout);
 
@@ -109,7 +109,7 @@ namespace AuthDemo
 				ShowChildWindowAndFocus(new EditUserDialog(this));
 		}
 
-		void OnDeleteUser(object sender, RoutedEventArgs rea)
+		private void OnDeleteUser(object sender, RoutedEventArgs rea)
 		{
 			try
 			{
@@ -125,12 +125,12 @@ namespace AuthDemo
 			}
 		}
 
-		void OnAddSertificate(object sender, RoutedEventArgs info)
+		private void OnAddSertificate(object sender, RoutedEventArgs info)
 		{
 			ShowChildWindowAndFocus(new AddSertificateDialog(this));
 		}
 
-		void OnEditSertificate(object sender, RoutedEventArgs rea)
+		private void OnEditSertificate(object sender, RoutedEventArgs rea)
 		{
 			HidePopupMessage(mainLayout);
 
@@ -140,7 +140,7 @@ namespace AuthDemo
 				ShowChildWindowAndFocus(new EditSertificateDialog(this));
 		}
 
-		void OnDeleteSertificate(object sender, RoutedEventArgs rea)
+		private void OnDeleteSertificate(object sender, RoutedEventArgs rea)
 		{
 			try
 			{
@@ -211,26 +211,26 @@ namespace AuthDemo
 			}
 		}
 
-		void OnTabSwitched(object sender, SelectionChangedEventArgs args)
+		private void OnTabSwitched(object sender, SelectionChangedEventArgs args)
 		{
 			HidePopupMessage(mainLayout);
 		}
 
-		void OnUsersGridScroll(object sender, MouseWheelEventArgs info)
+		private void OnUsersGridScroll(object sender, MouseWheelEventArgs info)
 		{
 			if (info.Delta > 0)
 				usersGridScroll.LineUp();
 			else usersGridScroll.LineDown();
 		}
 
-		void OnSertificatesGridScroll(object sender, MouseWheelEventArgs info)
+		private void OnSertificatesGridScroll(object sender, MouseWheelEventArgs info)
 		{
 			if (info.Delta > 0)
 				sertificatesGridScroll.LineUp();
 			else sertificatesGridScroll.LineDown();
 		}
 
-		void OnDevicesGridScroll(object sender, MouseWheelEventArgs info)
+		private void OnDevicesGridScroll(object sender, MouseWheelEventArgs info)
 		{
 			if (info.Delta > 0)
 				devicesGridScroll.LineUp();
