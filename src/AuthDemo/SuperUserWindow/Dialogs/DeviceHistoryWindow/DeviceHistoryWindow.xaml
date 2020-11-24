@@ -6,18 +6,18 @@
 	WindowStartupLocation="CenterScreen"
 	SizeToContent="WidthAndHeight"
 	ResizeMode="NoResize">
-	<MonoWindowBehavior.Resources>
+	<Window.Resources>
 		<Style x:Key="scrollStyle">
 			<Setter Property="ScrollViewer.Height" Value="200" />
 		</Style>
-	</MonoWindowBehavior.Resources>
+	</Window.Resources>
 	<StackPanel Name="mainLayout">
 		<ScrollViewer Style="{StaticResource ResourceKey=scrollStyle}"
-			Name="usersGridScroll">
+			Name="historyGridScroll">
 			<ListView Name="historyGrid"
 				SelectionMode="Single"
 				Margin="4 4 4 0"
-				PreviewMouseWheel="OnUsersGridScroll">
+				PreviewMouseWheel="OnHistoryGridScroll">
 				<ListView.ItemContainerStyle>
 					<Style TargetType="ListViewItem">
 						<Setter Property="Height" Value="23" />
