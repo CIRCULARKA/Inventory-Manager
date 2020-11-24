@@ -18,7 +18,7 @@ namespace AuthDemo
 
 			try
 			{
-				var lastDeviceNote = History.GetDeviceLastHirstoryNote(SelectedDevice);
+				var lastDeviceNote = History.GetDeviceLastHistoryNote(SelectedDevice);
 				if (lastDeviceNote.Status.Name == "Убрано на склад")
 					statusBox.IsChecked = true;
 			}

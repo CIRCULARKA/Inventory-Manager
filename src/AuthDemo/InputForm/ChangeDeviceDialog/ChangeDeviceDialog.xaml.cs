@@ -78,7 +78,7 @@ namespace AuthDemo
 
 			try
 			{
-				currentHistoryNote = History.GetDeviceLastHirstoryNote(SelectedDevice);
+				currentHistoryNote = History.GetDeviceLastHistoryNote(SelectedDevice);
 
 				// Setting device's Corps
 				for (int i = 0; i < corpsBox.Items.Count; i++)
@@ -94,7 +94,7 @@ namespace AuthDemo
 			parentWindow.devicesGrid.SelectedItem as Device;
 
 		protected History SelectedDevicelastHistoryNote =>
-			History.GetDeviceLastHirstoryNote(SelectedDevice);
+			History.GetDeviceLastHistoryNote(SelectedDevice);
 
 		protected DeviceConfiguration SelectedDeviceCongifuration =>
 			DeviceConfiguration.GetDeviceConfiguration(SelectedDevice);
