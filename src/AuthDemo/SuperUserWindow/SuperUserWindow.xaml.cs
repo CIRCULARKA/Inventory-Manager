@@ -15,7 +15,7 @@ namespace AuthDemo
 		private readonly List<Sertificate> sertificates;
 		private readonly List<Device> devices;
 
-		public SuperUserWindow(Window parentWindow)
+		public SuperUserWindow()
 		{
 			users = new List<User>();
 			sertificates = new List<Sertificate>();
