@@ -11,9 +11,9 @@ namespace AuthDemo
 {
 	public partial class SuperUserWindow : MonoWindowBehavior
 	{
-		List<User> users;
-		List<Sertificate> sertificates;
-		List<Device> devices;
+		private readonly List<User> users;
+		private readonly List<Sertificate> sertificates;
+		private readonly List<Device> devices;
 
 		public SuperUserWindow(Window parentWindow)
 		{
