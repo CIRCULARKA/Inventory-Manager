@@ -73,6 +73,16 @@ namespace AuthDemo
 			{
 				foreach (Cabinet cabinet in Cabinet.GetAll(corpsBox.SelectedItem as Corps))
 					cabinetBox.Items.Add(cabinet);
+
+				for (int i = 0; i < cabinetBox.Items.Count; i++)
+				{
+					var currentHistoryNote = History.GetDeviceLastHistoryNote(SelectedDevice);
+					if (currentHistoryNote.Cabinet.ID == (cabinetBox.Items[i] as Cabinet).ID)
+					{
+						cabinetBox.SelectedIndex = i;
+						break;
+					}
+				}
 			}
 			catch (NullReferenceException) { }
 		}
