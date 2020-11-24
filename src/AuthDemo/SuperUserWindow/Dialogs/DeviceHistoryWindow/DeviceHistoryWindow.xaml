@@ -28,11 +28,11 @@
 						<GridViewColumn Header="Действие"
 							DisplayMemberBinding="{Binding Path=Status.Name}" Width="150" />
 						<GridViewColumn Header="Корпус"
-							DisplayMemberBinding="{Binding Path=Corps.Name}" Width="150" />
+							DisplayMemberBinding="{Binding Path=Corps.Name}" Width="120" />
 						<GridViewColumn Header="Кабинет"
 							DisplayMemberBinding="{Binding Path=Cabinet.Name}" Width="60" />
 						<GridViewColumn Header="Дата изменений"
-							DisplayMemberBinding="{Binding Path=ChangeTimeDateTime}" Width="100" />
+							DisplayMemberBinding="{Binding Path=ChangeTimeDateTime}" Width="150" />
 					</GridView>
 				</ListView.View>
 			</ListView>
