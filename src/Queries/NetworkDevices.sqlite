@@ -83,8 +83,7 @@ CREATE TABLE History
 	FOREIGN KEY (CabinetID) REFERENCES Cabinet (ID)
 		ON UPDATE CASCADE,
 	FOREIGN KEY (StatusID) REFERENCES Status (ID)
-		ON UPDATE CASCADE,
-	UNIQUE (DeviceSerialNumber, CorpsID, CabinetID, ChangeDate, StatusID)
+		ON UPDATE CASCADE
 );
 DROP TABLE History;
 DELETE FROM History;
