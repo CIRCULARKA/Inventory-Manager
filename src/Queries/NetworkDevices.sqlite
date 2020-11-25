@@ -69,6 +69,7 @@ INSERT INTO Status (Name)
 PRAGMA foreign_keys = ON;
 CREATE TABLE History
 (
+	ID INTEGER AUTOINCREMENT NOT NULL,
 	DeviceSerialNumber INTEGER NOT NULL,
 	CorpsID INTEGER NOT NULL,
 	CabinetID INTEGER NOT NULL,
@@ -83,7 +84,7 @@ CREATE TABLE History
 		ON UPDATE CASCADE,
 	FOREIGN KEY (StatusID) REFERENCES Status (ID)
 		ON UPDATE CASCADE,
-	PRIMARY KEY (DeviceSerialNumber, CorpsID, CabinetID, ChangeDate, StatusID)
+	PRIMARY KEY (ID, DeviceSerialNumber, CorpsID, CabinetID, ChangeDate, StatusID)
 );
 DROP TABLE History;
 DELETE FROM History;

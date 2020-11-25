@@ -10,8 +10,10 @@ namespace AuthDemo.Data
 		static History()
 		{
 			FirstPropertyIndex = 0;
-			LastPropertyIndex = 4;
+			LastPropertyIndex = 5;
 		}
+
+		public long ID { get; set; }
 
 		public long DeviceSerialNumber { get; set; }
 
