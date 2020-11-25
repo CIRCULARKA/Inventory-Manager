@@ -131,3 +131,7 @@ UPDATE Device
 SELECT * FROM Device;
 SELECT * FROM DeviceConfiguration;
 SELECT * FROM History;
+
+DELETE FROM Device;
+DELETE FROM DeviceConfiguration;
+DELETE FROM History;

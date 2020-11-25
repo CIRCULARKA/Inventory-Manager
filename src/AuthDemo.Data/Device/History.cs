@@ -9,7 +9,7 @@ namespace AuthDemo.Data
 	{
 		static History()
 		{
-			FirstPropertyIndex = 0;
+			FirstPropertyIndex = 1;
 			LastPropertyIndex = 5;
 		}
 
@@ -44,7 +44,8 @@ namespace AuthDemo.Data
 				TryOpenConnection();
 
 				CurrentQuery = "SELECT * FROM History " +
-					"WHERE DeviceSerialNumber = @serialNumber;";
+					"WHERE DeviceSerialNumber = @serialNumber " +
+					"ORDER BY ID ASC;";
 
 				AddParameter("@serialNumber", device.SerialNumber);
 
@@ -69,7 +70,7 @@ namespace AuthDemo.Data
 		static public History GetDeviceLastHistoryNote(Device device)
 		{
 			var result = GetDeviceHistory(device);
-			return result[0];
+			return result[result.Count - 1];
 		}
 
 		public static void DeleteAllDeviceHistory(Device device)
