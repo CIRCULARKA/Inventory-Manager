@@ -84,19 +84,20 @@ namespace AuthDemo.Data
 		{
 			var result = new History();
 
-			result.DeviceSerialNumber = (long)ReadColumnFromRow(0);
-			result.Corps = Corps.GetCorpsByID((long)ReadColumnFromRow(1));
+			result.ID = (long)ReadColumnFromRow(0);
+			result.DeviceSerialNumber = (long)ReadColumnFromRow(1);
+			result.Corps = Corps.GetCorpsByID((long)ReadColumnFromRow(2));
 			result.Cabinet = Cabinet.GetCabinetByID(
-				(long)ReadColumnFromRow(2)
+				(long)ReadColumnFromRow(3)
 			);
 
-			string stringDate = (string)ReadColumnFromRow(3);
+			string stringDate = (string)ReadColumnFromRow(4);
 			string[] splittedDate = stringDate.Split('.', '\\', '/', '-');
 			result.ChangeTimeDateTime = DateTime.Parse(
 				$"{splittedDate[2]}-{splittedDate[1]}-{splittedDate[0]}"
 			);
 
-			result.Status = Status.GetStatusByID((long)ReadColumnFromRow(4));
+			result.Status = Status.GetStatusByID((long)ReadColumnFromRow(5));
 
 			return result;
 		}

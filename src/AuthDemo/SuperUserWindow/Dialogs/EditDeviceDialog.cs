@@ -1,6 +1,5 @@
 using System;
 using System.Windows;
-using System.Globalization;
 
 using AuthDemo.Data;
 using AuthDemo.Exceptions;
