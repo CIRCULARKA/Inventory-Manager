@@ -99,7 +99,7 @@ namespace AuthDemo
 			}
 		}
 
-		private void OnOnlyDisplayDeviceWithIP(object sender, RoutedEventArgs info)
+		public void UpdateGridWithDevicesWithoutIP()
 		{
 			devicesGrid.ItemsSource = null;
 
@@ -108,6 +108,11 @@ namespace AuthDemo
 				devicesGrid.ItemsSource = Device.GetAllWithoutIP();
 			}
 			catch (NoSuchDataException) { }
+		}
+
+		private void OnOnlyDisplayDeviceWithIP(object sender, RoutedEventArgs info)
+		{
+			UpdateGridWithDevicesWithoutIP();
 		}
 
 		private void OnDisplayDeviceAnyIP(object sender, RoutedEventArgs info)
