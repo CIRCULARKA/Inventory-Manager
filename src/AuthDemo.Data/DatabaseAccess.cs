@@ -88,7 +88,14 @@ namespace AuthDemo.Data
 			);
 		}
 
-		static protected void ResetCommand() { command.Reset(); }
+		static protected void ResetCommand()
+		{
+			try
+			{
+				command.Reset();
+			}
+			catch (NullReferenceException) { }
+		}
 
 		static protected void FinishQuery()
 		{
