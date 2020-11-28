@@ -73,6 +73,29 @@ namespace AuthDemo.Data
 			finally { FinishQuery(); }
 		}
 
+		static public List<Device> GetAllWithoutIP()
+		{
+			TryOpenConnection();
+
+			var result = new List<Device>();
+
+			try
+			{
+				CurrentQuery =
+					$"SELECT DeviceSerialNumber FROM DeviceConfiguration WHERE IPAddressID = 1;";
+				ExecuteReader();
+
+				if (Reader.HasRows)
+					for (; SwitchToNextRow();)
+						result.Add(GetDeviceBySerialNumber((long)ExecuteScalar()));
+				else
+					throw new NoSuchDataException();
+			}
+			finally { FinishQuery(); }
+
+			return result;
+		}
+
 		static protected Device GetEntityFromReader()
 		{
 			var result = new Device();
