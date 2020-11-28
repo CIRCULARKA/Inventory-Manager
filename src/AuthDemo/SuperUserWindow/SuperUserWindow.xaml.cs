@@ -96,6 +96,13 @@ namespace AuthDemo
 			}
 		}
 
+		private void OnOnlyDisplayDeviceWithIP(object sender, RoutedEventArgs info)
+		{
+
+		}
+
+		private void OnDisplayDeviceAnyIP(object sender, RoutedEventArgs info) { }
+
 		private void ShowChildWindowAndFocus(Window window) =>
 			window.ShowDialog();
 

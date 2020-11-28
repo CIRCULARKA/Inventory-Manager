@@ -145,7 +145,10 @@ namespace AuthDemo
 				MakeRedBorders(serialNumberBox);
 				ShowPopupMessage("Серийный номер должен быть числом", mainLayout);
 			}
-			catch (DataAlreadyExistException) { }
+			catch (DataAlreadyExistException)
+			{
+				
+			}
 			catch (ConnectionLostException e) { ShowPopupMessage(e.Message, mainLayout); }
 			catch (NoSuchDataException) { }
 			finally

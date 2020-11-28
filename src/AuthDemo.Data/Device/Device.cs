@@ -45,6 +45,34 @@ namespace AuthDemo.Data
 			return result;
 		}
 
+		static public Device GetDeviceBySerialNumber(long serialNumber)
+		{
+			try
+			{
+				TryOpenConnection();
+
+				CurrentQuery = "SELECT * FROM Device " +
+					$"WHERE SerialNumber = @serialNumber;";
+
+				AddParameter("@serialNumber", serialNumber);
+
+				ExecuteReader();
+
+				if (Reader.HasRows)
+				{
+					SwitchToNextRow();
+					return GetEntityFromReader();
+				}
+				else
+				{
+					throw new NoSuchDataException(
+						"Устройство не найдено"
+					);
+				}
+			}
+			finally { FinishQuery(); }
+		}
+
 		static protected Device GetEntityFromReader()
 		{
 			var result = new Device();

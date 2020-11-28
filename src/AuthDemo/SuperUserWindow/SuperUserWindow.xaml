@@ -129,10 +129,19 @@
 				</TabItem.Header>
 				<TabItem.Content>
 					<StackPanel Name="devicesLayout">
-						<TextBlock Text="Управление сетевыми устройствами"
-							Width="380" Height="30"
-							TextAlignment="Center"
-							FontSize="20" FontWeight="Bold" />
+					<StackPanel Orientation="Horizontal">
+							<TextBlock Text="Управление сетевыми устройствами"
+								Width="380" Height="30"
+								TextAlignment="Center"
+								FontSize="20" FontWeight="Bold" />
+							<CheckBox VerticalAlignment="Center"
+								Checked="OnOnlyDisplayDeviceWithIP"
+								Unchecked="OnDisplayDeviceAnyIP" />
+							<TextBlock Text="Только устройства без IP"
+								VerticalAlignment="Center"
+								FontSize="15"
+								Margin="3 8 20 0" />
+						</StackPanel>
 						<Separator />
 						<ScrollViewer Style="{StaticResource ResourceKey=scrollStyle}"
 							Name="devicesGridScroll">
@@ -150,7 +159,7 @@
 										<GridViewColumn Header="Серийный номер"
 											DisplayMemberBinding="{Binding Path=SerialNumber}" Width="110" />
 										<GridViewColumn Header="Инвентарный номер"
-											DisplayMemberBinding="{Binding Path=InventoryNumber}" Width="140" />
+											DisplayMemberBinding="{Binding Path=InventoryNumber}" Width="160" />
 										<GridViewColumn Header="Тип"
 											DisplayMemberBinding="{Binding Path=Type.Name}" Width="130" />
 										<GridViewColumn Header="Сетевое имя"
