@@ -44,7 +44,7 @@ namespace AuthDemo.Data
 				TryOpenConnection();
 
 				CurrentQuery = "SELECT * FROM User " +
-					$"WHERE Login = @login;";
+					"WHERE Login = @login;";
 
 				AddParameter("@login", login);
 

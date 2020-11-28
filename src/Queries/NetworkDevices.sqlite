@@ -132,6 +132,10 @@ SELECT * FROM Device;
 SELECT * FROM DeviceConfiguration;
 SELECT * FROM History;
 
+SELECT SerialNumber, InventoryNumber, TypeID, NetworkName FROM Device, DeviceConfiguration
+	WHERE DeviceConfiguration.IPAddressID = 1 AND
+	Device.SerialNumber = DeviceConfiguration.DeviceSerialNumber;
+
 DELETE FROM Device;
 DELETE FROM DeviceConfiguration;
 DELETE FROM History;

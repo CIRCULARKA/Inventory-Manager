@@ -82,22 +82,15 @@ namespace AuthDemo.Data
 			try
 			{
 				CurrentQuery =
-					$"SELECT DeviceSerialNumber FROM DeviceConfiguration WHERE IPAddressID = 1;";
+					$"SELECT SerialNumber, InventoryNumber, TypeID, NetworkName FROM Device, DeviceConfiguration " +
+						"WHERE DeviceConfiguration.IPAddressID = 1 AND " +
+						"Device.SerialNumber = DeviceConfiguration.DeviceSerialNumber;";
 
 				ExecuteReader();
 
-				// TEMPORARY SOLUTION
 				if (Reader.HasRows)
-				{
-					var serialNumbers = new List<long>();
-					while (SwitchToNextRow())
-						serialNumbers.Add((long)ReadColumnFromRow(0));
-
-					FinishQuery();
-
-					foreach (long serial in serialNumbers)
-						result.Add(GetDeviceBySerialNumber(serial));
-				}
+					for (; SwitchToNextRow();)
+						result.Add(GetEntityFromReader());
 				else
 					throw new NoSuchDataException();
 			}
