@@ -134,7 +134,8 @@
 								Width="380" Height="30"
 								TextAlignment="Center"
 								FontSize="20" FontWeight="Bold" />
-							<CheckBox VerticalAlignment="Center"
+							<CheckBox Name="devicesWithoutIpCheck"
+								VerticalAlignment="Center"
 								Checked="OnOnlyDisplayDeviceWithIP"
 								Unchecked="OnDisplayDeviceAnyIP" />
 							<TextBlock Text="Только устройства без IP"
