@@ -75,7 +75,11 @@ namespace AuthDemo
 				ClearInputFields(contentLayout);
 				RestoreComboBoxState(deviceTypeBox);
 
-				parentWindow.UpdateDevicesGrid();
+				if (parentWindow.ShouldShowDevicesWithoutIP)
+					parentWindow.UpdateGridWithDevicesWithoutIP();
+				else
+					parentWindow.UpdateDevicesGrid();
+					
 				parentWindow.Show();
 			}
 			catch (FormatException)
