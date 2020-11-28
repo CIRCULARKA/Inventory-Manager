@@ -107,7 +107,10 @@ namespace AuthDemo
 			catch (NoSuchDataException) { }
 		}
 
-		private void OnDisplayDeviceAnyIP(object sender, RoutedEventArgs info) { }
+		private void OnDisplayDeviceAnyIP(object sender, RoutedEventArgs info)
+		{
+			UpdateDevicesGrid();
+		}
 
 		private void ShowChildWindowAndFocus(Window window) =>
 			window.ShowDialog();
