@@ -98,7 +98,13 @@ namespace AuthDemo
 
 		private void OnOnlyDisplayDeviceWithIP(object sender, RoutedEventArgs info)
 		{
+			devicesGrid.ItemsSource = null;
 
+			try
+			{
+				devicesGrid.ItemsSource = Device.GetAllWithoutIP();
+			}
+			catch (NoSuchDataException) { }
 		}
 
 		private void OnDisplayDeviceAnyIP(object sender, RoutedEventArgs info) { }
