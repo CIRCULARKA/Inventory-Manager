@@ -79,6 +79,8 @@ namespace AuthDemo.Data
 		/// </summary>
 		static protected int ExecuteNonQueryCommand() { return command.ExecuteNonQuery(); }
 
+		static protected object ExecuteScalar() { return command.ExecuteScalar(); }
+
 		static protected void AddParameter(string paramName, object value)
 		{
 			Command.Parameters.Add(
