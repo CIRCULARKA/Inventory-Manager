@@ -83,11 +83,16 @@ namespace AuthDemo.Data
 			{
 				CurrentQuery =
 					$"SELECT DeviceSerialNumber FROM DeviceConfiguration WHERE IPAddressID = 1;";
-				ExecuteReader();
 
+				ExecuteReader();
 				if (Reader.HasRows)
-					for (; SwitchToNextRow();)
-						result.Add(GetDeviceBySerialNumber((long)ExecuteScalar()));
+				{
+					// TEMPORARY SOLUTION
+					SwitchToNextRow();
+					long value = (long)ReadColumnFromRow(0);
+					FinishQuery();
+					result.Add(GetDeviceBySerialNumber(value));
+				}
 				else
 					throw new NoSuchDataException();
 			}
