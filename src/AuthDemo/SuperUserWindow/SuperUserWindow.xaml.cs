@@ -27,6 +27,9 @@ namespace AuthDemo
 		public Device SelectedDevice =>
 			devicesGrid.SelectedItem as Device;
 
+		public bool ShouldShowDevicesWithoutIP =>
+			(bool)devicesWithoutIpCheck.IsChecked;
+
 		private void FillGridsWithDataAndInitXaml()
 		{
 			GetUsersFromDB();
