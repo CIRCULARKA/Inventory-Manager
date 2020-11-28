@@ -116,6 +116,16 @@ namespace AuthDemo
 			}
 		}
 
+		private void OnDisplayDevicesWithoutIP(object sender, RoutedEventArgs info)
+		{
+			UpdateDevicesGrid();
+		}
+
+		private void OnDisplayAllDevices(object sender, RoutedEventArgs info)
+		{
+			UpdateDevicesGrid();
+		}
+
 		private void ShowChildWindowAndFocus(Window window) =>
 			window.ShowDialog();
 
