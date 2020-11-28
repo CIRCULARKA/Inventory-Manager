@@ -87,37 +87,33 @@ namespace AuthDemo
 		public void UpdateDevicesGrid()
 		{
 			_devices.RemoveRange(0, _devices.Count);
-			try
+
+			if (ShouldShowDevicesWithoutIP)
 			{
-				_devices.AddRange(Device.GetAll());
-				devicesGrid.ItemsSource = null;
-				devicesGrid.ItemsSource = _devices;
+				try
+				{
+					_devices.AddRange(Device.GetAllWithoutIP());
+					devicesGrid.ItemsSource = null;
+					devicesGrid.ItemsSource = _devices;
+				}
+				catch (NoSuchDataException)
+				{
+					devicesGrid.ItemsSource = null;
+				}
 			}
-			catch (NoSuchDataException)
+			else
 			{
-				devicesGrid.ItemsSource = null;
+				try
+				{
+					_devices.AddRange(Device.GetAll());
+					devicesGrid.ItemsSource = null;
+					devicesGrid.ItemsSource = _devices;
+				}
+				catch (NoSuchDataException)
+				{
+					devicesGrid.ItemsSource = null;
+				}
 			}
-		}
-
-		public void UpdateGridWithDevicesWithoutIP()
-		{
-			devicesGrid.ItemsSource = null;
-
-			try
-			{
-				devicesGrid.ItemsSource = Device.GetAllWithoutIP();
-			}
-			catch (NoSuchDataException) { }
-		}
-
-		private void OnOnlyDisplayDeviceWithIP(object sender, RoutedEventArgs info)
-		{
-			UpdateGridWithDevicesWithoutIP();
-		}
-
-		private void OnDisplayDeviceAnyIP(object sender, RoutedEventArgs info)
-		{
-			UpdateDevicesGrid();
 		}
 
 		private void ShowChildWindowAndFocus(Window window) =>
